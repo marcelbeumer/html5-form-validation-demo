@@ -6,6 +6,7 @@
             var words = value.split(' ').length,
                 numbers = /\d/.test(value),
                 len = value.length;
+
             if ($.trim(value).toLowerCase() === "han solo") {
                 field.value = '"I\'ve got a bad feeling about this"';
             }
