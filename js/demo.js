@@ -10,13 +10,10 @@
             if (numbers) {
                 field.setCustomValidity('I don\'t believe that you have' +
                         ' a number in your name');
-                return;
-            }
-
-            if (words > 1 && len >= 5) {
-                field.setCustomValidity('');
-            } else {
+            } else if (words < 2 || len < 5) {
                 field.setCustomValidity('Please enter your full name');
+            } else {
+                field.setCustomValidity('');
             }
         },
 
