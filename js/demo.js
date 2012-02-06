@@ -1,7 +1,11 @@
 (function() {
 
+    // validators - custom validators.
+    // validateField will apply these validators when the form
+    // field has a class name that matches.
     var validators = {
 
+        // name - demo name field
         'name' : function(value, field, $form) {
             var words = value.split(' ').length,
                 numbers = /\d/.test(value),
@@ -21,14 +25,14 @@
             }
         },
 
-        'minmax' : function(value, field, $form) {
+        // number - only allows numbers/floats, supports data-min/max.
+        'number' : function(value, field, $form) {
             var minAttr = $(field).attr('data-min'),
                 maxAttr = $(field).attr('data-max'),
-                min = minAttr ? parseInt(minAttr, 10) : undefined,
-                max = maxAttr ? parseInt(maxAttr, 10) : undefined,
+                min = minAttr ? parseFloat(minAttr, 10) : undefined,
+                max = maxAttr ? parseFloat(maxAttr, 10) : undefined,
+                number = parseFloat(value, 10),
                 msg;
-
-            value = parseInt(value, 10);
 
             if (min && max === undefined) {
                 msg = 'Please enter value above ' + min;
@@ -38,15 +42,18 @@
                 msg = 'Please enter value between ' + min + ' and ' + max;
             }
 
-            if (min !== undefined && value < min) {
+            if (isNaN(value)) {
+                field.setCustomValidity("Please enter a number");
+            } else if (min !== undefined && number < min) {
                 field.setCustomValidity(msg);
-            } else if (max !== undefined && value > max) {
+            } else if (max !== undefined && number > max) {
                 field.setCustomValidity(msg);
             } else {
                 field.setCustomValidity('');
             }
         },
 
+        // password - password field of min. 5 chars
         'password' : function(value, field, $form) {
             if (value.length >= 5) {
                 field.setCustomValidity('');
@@ -56,12 +63,14 @@
             }
         },
 
+        // same-password-source - same password
         'same-password-source' : function(value, field, $form) {
             var target = $form.find('.same-password-target')[0];
             // force revalidation
             if (target.value) $(target).trigger('change');
         },
 
+        // same-password-target - same password
         'same-password-target' : function(value, field, $form) {
             var source = $form.find('.same-password-source')[0],
                 same;
@@ -75,11 +84,16 @@
     };
 
 
+    // createError - can create error message element.
+    // Is done during intialization.
     function createError() {
-        return $(this); // no custom error element
+        // No custom error element, we will do smart things
+        // with show/hideError.
+        return $(this);
     }
 
 
+    // showError - shows error message
     function showError($el, msg, field) {
         $el.parents('.control-group').addClass('error');
         $el.parent().
@@ -90,6 +104,7 @@
     }
 
 
+    // hideError - hides error message
     function hideError($el, field) {
         $el.parents('.control-group').removeClass('error');
         $el.parent().find('.help-inline.error').
@@ -99,7 +114,11 @@
     }
 
 
+    // validateField - function that validates a field.
     function validateField(field, form) {
+        // The checkValidity call will actuall trigger the invalid event
+        // when the field is not valid. Until that time, it's just a piece
+        // of state on field.validity.
         if (field.checkValidity() || field.validity.customError) {
             var classes = (field.className + '').split(' '),
                 l = classes.length,
@@ -107,12 +126,15 @@
                 cn,
                 validator;
 
+            // Check if there is a validator for each class
             for (x = 0; x < l; x++) {
                 cn = $.trim(classes[x]);
                 validator = validators[cn];
+                // And run it if so
                 if (validator) validator(field.control.value(), field, form);
             }
 
+            // We always have to declare our inputs as valid ourselves
             if (field.checkValidity()) $(field).trigger('valid');
         }
     }
@@ -129,8 +151,8 @@
             }
         }).each(function() {
 
-            // We want to do validation on key up, and we want to hook in
-            // custom validation rules.
+            // We want to do validation on input/change,
+            // and we want to hook in custom validation rules.
 
             var $form = $(this),
                 $fields = $(this).f5fields();
@@ -146,7 +168,7 @@
                 // remove server errors here
             });
 
-            $fields.bind('keyup', function(e) {
+            $fields.bind('input', function(e) {
                 if (false /* could remove some server errors */ ||
                     $(this).data('checkValidityOnKeyUp') === true) {
                     validateField(this, $form);

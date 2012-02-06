@@ -34,34 +34,41 @@
                                 <legend>A dummy signup form to play with</legend>
 
                                 <div class="control-group">
-                                    <label class="control-label">Name</label>
+                                    <label class="control-label" for="field-name">Name</label>
                                     <div class="controls">
-                                        <input type="text" name="name" required class="name input-xlarge" placeholder="Your full name, like 'Han Solo'">
+                                        <input type="text" name="name" id="field-name" required class="name input-xlarge" placeholder="Your full name, like 'Han Solo'">
                                         <span class="help-inline">Try single words or numbers</span>
                                     </div>
                                 </div>
 
                                 <div class="control-group">
-                                    <label class="control-label">Password</label>
+                                    <label class="control-label" for="field-email">Email</label>
                                     <div class="controls">
-                                        <input type="password" name="password" required class="password same-password-source input-xlarge"/>
+                                        <input type="email" name="email" id="field-email" required class="input-xlarge" placeholder="Your email address">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label" for="field-password">Password</label>
+                                    <div class="controls">
+                                        <input type="password" name="password" id="field-password" required class="password same-password-source input-xlarge"/>
                                         <span class="help-inline">Try &lt; 5 chars</span>
                                     </div>
                                 </div>
 
                                 <div class="control-group">
-                                    <label class="control-label">Password (again)</label>
+                                    <label class="control-label" for="field-password2">Password (again)</label>
                                     <div class="controls">
-                                        <input type="password" name="password2" required class="same-password-target input-xlarge"/>
+                                        <input type="password" name="password2" id="field-password2" required class="same-password-target input-xlarge"/>
                                         <span class="help-inline">Try something different</span>
                                     </div>
                                 </div>
 
                                 <div class="control-group">
-                                    <label class="control-label">Weight</label>
+                                    <label class="control-label" for="field-weight">Weight</label>
                                     <div class="controls">
                                         <div class="input-append">
-                                            <input type="number" name="weight" data-min="40" data-max="300" required class="minmax span2"/>
+                                            <input type="text" name="weight" id="field-weight" data-min="40" data-max="300" required class="number minmax span2"/>
                                             <span class="add-on">kg</span>
                                             <span class="help-inline">Try non numeric, &lt; 40 or &gt; 300</span>
                                         </div>
@@ -69,10 +76,10 @@
                                 </div>
 
                                 <div class="control-group">
-                                    <label class="control-label">Length</label>
+                                    <label class="control-label" for="field-length">Length</label>
                                     <div class="controls">
                                         <div class="input-append">
-                                            <input type="number" name="length" data-min="100" required class="minmax span2"/>
+                                            <input type="text" name="length" id="field-length" data-min="100" required class="number minmax span2"/>
                                             <span class="add-on">cm</span>
                                             <span class="help-inline">Try non numeric, or &lt; 100</span>
                                         </div>
