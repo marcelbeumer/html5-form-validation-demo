@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="container">
+
+            <div class="header">
+                <h1>
+                    HTML5 form validation demo
+                    <small>using a fork of jquery.f5.js</small>
+                </h1>
+            </div>
+            <div class="section">
+                <div class="row">
+                    <div class="span12">
+                        <form action="#" class="form-horizontal" method="get">
+                            <fieldset>
+                                <legend>A dummy signup form to play with</legend>
+
+                                <div class="control-group">
+                                    <label class="control-label">Name</label>
+                                    <div class="controls">
+                                        <input type="text" name="name" required class="name input-xlarge" placeholder="Your full name, like 'Han Solo'">
+                                        <span class="help-inline">Try single words or numbers</span>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">Password</label>
+                                    <div class="controls">
+                                        <input type="password" name="password" required class="password same-password-source input-xlarge" placeholder="Your password of at least 5 characters"/>
+                                        <span class="help-inline">Try &lt; 5 chars</span>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">Password (again)</label>
+                                    <div class="controls">
+                                        <input type="password" name="password2" required class="same-password-target input-xlarge" placeholder="Repeat the exact same password"/>
+                                        <span class="help-inline">Try something different</span>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">Weight</label>
+                                    <div class="controls">
+                                        <div class="input-append">
+                                            <input type="number" name="weight" min="40" required class="span2"/>
+                                            <span class="add-on">kg</span>
+                                            <span class="help-inline">Try anything non numeric, or very low</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">Length</label>
+                                    <div class="controls">
+                                        <div class="input-append">
+                                            <input type="number" name="length" min="120" required class="span2"/>
+                                            <span class="add-on">cm</span>
+                                            <span class="help-inline">Try anything non numeric, or very low</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Sign up</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/jquery-1.7.1.min.js"></script>
+        <script src="js/jquery.f5.js"></script>
+        <script src="js/demo.js"></script>
+
+        <a href="http://github.com/marcelbeumer/html5-form-validation-demo"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub"></a>
+
+    </body>
+</html>
