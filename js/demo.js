@@ -6,6 +6,9 @@
             var words = value.split(' ').length,
                 numbers = /\d/.test(value),
                 len = value.length;
+            if ($.trim(value).toLowerCase() === "han solo") {
+                field.value = '"I\'ve got a bad feeling about this"';
+            }
 
             if (numbers) {
                 field.setCustomValidity('I don\'t believe that you have' +
@@ -47,7 +50,7 @@
             if (value.length >= 5) {
                 field.setCustomValidity('');
             } else {
-                field.setCustomValidity('Password should be at least' + 
+                field.setCustomValidity('Password should be at least' +
                         ' 5 characters');
             }
         },
