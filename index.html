@@ -31,7 +31,7 @@
                                 <div class="control-group">
                                     <label class="control-label">Password</label>
                                     <div class="controls">
-                                        <input type="password" name="password" required class="password same-password-source input-xlarge" placeholder="Your password of at least 5 characters"/>
+                                        <input type="password" name="password" required class="password same-password-source input-xlarge"/>
                                         <span class="help-inline">Try &lt; 5 chars</span>
                                     </div>
                                 </div>
@@ -39,7 +39,7 @@
                                 <div class="control-group">
                                     <label class="control-label">Password (again)</label>
                                     <div class="controls">
-                                        <input type="password" name="password2" required class="same-password-target input-xlarge" placeholder="Repeat the exact same password"/>
+                                        <input type="password" name="password2" required class="same-password-target input-xlarge"/>
                                         <span class="help-inline">Try something different</span>
                                     </div>
                                 </div>
@@ -48,9 +48,9 @@
                                     <label class="control-label">Weight</label>
                                     <div class="controls">
                                         <div class="input-append">
-                                            <input type="number" name="weight" min="40" required class="span2"/>
+                                            <input type="number" name="weight" data-min="40" data-max="300" required class="minmax span2"/>
                                             <span class="add-on">kg</span>
-                                            <span class="help-inline">Try anything non numeric, or very low</span>
+                                            <span class="help-inline">Try non numeric, &lt; 40 or &gt; 300</span>
                                         </div>
                                     </div>
                                 </div>
@@ -59,9 +59,9 @@
                                     <label class="control-label">Length</label>
                                     <div class="controls">
                                         <div class="input-append">
-                                            <input type="number" name="length" min="120" required class="span2"/>
+                                            <input type="number" name="length" data-min="100" required class="minmax span2"/>
                                             <span class="add-on">cm</span>
-                                            <span class="help-inline">Try anything non numeric, or very low</span>
+                                            <span class="help-inline">Try non numeric, or &lt; 100</span>
                                         </div>
                                     </div>
                                 </div>

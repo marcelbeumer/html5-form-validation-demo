@@ -17,6 +17,32 @@
             }
         },
 
+        'minmax' : function(value, field, $form) {
+            var minAttr = $(field).attr('data-min'),
+                maxAttr = $(field).attr('data-max'),
+                min = minAttr ? parseInt(minAttr, 10) : undefined,
+                max = maxAttr ? parseInt(maxAttr, 10) : undefined,
+                msg;
+
+            value = parseInt(value, 10);
+
+            if (min && max === undefined) {
+                msg = 'Please enter value above ' + min;
+            } else if (max && min === undefined) {
+                msg = 'Please enter value below ' + max;
+            } else {
+                msg = 'Please enter value between ' + min + ' and ' + max;
+            }
+
+            if (min !== undefined && value < min) {
+                field.setCustomValidity(msg);
+            } else if (max !== undefined && value > max) {
+                field.setCustomValidity(msg);
+            } else {
+                field.setCustomValidity('');
+            }
+        },
+
         'password' : function(value, field, $form) {
             if (value.length >= 5) {
                 field.setCustomValidity('');
